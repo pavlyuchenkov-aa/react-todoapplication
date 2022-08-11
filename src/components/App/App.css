@@ -1,0 +1,196 @@
+.TodoApp {
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+}
+
+.react-tabs__tab-list .todo-item .item-text {
+    display: inline-block;
+    width: 110px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.TodoApp .todo-item .item-text {
+    display: inline-block;
+    padding-left: 6px;
+}
+
+.TodoApp input {
+    padding: 14px 32px 14px 16px;
+    border-radius: 4px 4px 4px 4px;
+    border: 2px solid #5d0cff;
+    outline: none;
+    background: transparent;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+[name="addbtn"] {
+    padding: 10px 7px;
+    margin-top: 20px;
+    border: none;
+    margin: 20px auto;
+    border-radius: 4px 4px 4px 4px;
+    cursor: pointer;
+    outline: none;
+    background: linear-gradient(90deg,
+            rgba(93, 12, 255, 1) 0%,
+            #9b00fa 100%);
+    width: 100px;
+    text-align: center;
+    color: #fff;
+    text-transform: capitalize;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+}
+
+.TodoApp .item-delete {
+    padding: 8px;
+    width: 90px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 15px;
+    background: linear-gradient(90deg,
+            rgba(93, 12, 255, 1) 0%,
+            rgba(155, 0, 250, 1) 100%);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.TodoApp .statusRow {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-spacing: 10px;
+}
+
+.TodoApp .statusColumn {
+    display: table-cell;
+    padding: 14px;
+    width: 55px;
+    font-size: 10px;
+    text-align: center;
+    margin-top: 15px;
+    background: #3c3e43;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.react-tabs__tab-list:empty:before {
+    font-size: 15px;
+    margin-top: auto;
+    margin-bottom: auto;
+    content: "No todos";
+}
+
+.react-tabs {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+    height: 500px;
+    border: 1px solid #3c3e43;
+    color: white;
+    border-radius: 5px;
+    margin-top: 20px;
+    overflow: auto;
+    background: #1c1d1f;
+}
+
+.react-tabs__tab-list {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    margin: 0;
+    padding: 0;
+    color: white;
+    background: #474c50;
+    overflow: auto;
+}
+
+.react-tabs__tab-list::-webkit-scrollbar {
+    width: 10px;
+}
+
+.react-tabs__tab-list::-webkit-scrollbar-track {
+    background-color: #e4e4e4;
+}
+
+.react-tabs__tab-list::-webkit-scrollbar-thumb {
+    background-color: #9e9e9e;
+}
+
+.react-tabs__tab {
+    height: 50px;
+    text-align: left;
+    list-style: none;
+    padding: 12px 6px;
+    cursor: pointer;
+    color: #bbb;
+    font-size: 15px;
+}
+
+.react-tabs__tab--selected {
+    padding-left: 21px;
+    background: #1c1d1f;
+    border-color: #1c1d1f;
+    color: white;
+}
+
+.react-tabs__tab-panel {
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+}
+
+.react-tabs__tab-panel--selected {
+    display: block;
+}
+
+.react-tabs__tab {
+    padding-left: 8px;
+}
+
+.react-tabs__tab--selected {
+    padding-left: 8px;
+}
+
+.panel-content {
+    text-align: center;
+}
+
+.dot.pending {
+    height: 18px;
+    width: 18px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot.inprogress {
+    height: 18px;
+    width: 18px;
+    background-color: #608dff;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot.done {
+    height: 18px;
+    width: 18px;
+    background-color: #23a02d;
+    border-radius: 50%;
+    display: inline-block;
+}
