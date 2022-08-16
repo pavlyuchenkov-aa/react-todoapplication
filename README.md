@@ -7,7 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 In the project directory, you can run:
 
 ## Screenshot
-![image](https://user-images.githubusercontent.com/71980083/184253719-31828df4-f36c-4ae7-b2b6-897b0f409b54.png)
+![image](https://user-images.githubusercontent.com/71980083/184863797-e615b54c-d67f-4f78-865e-27ffc0e1b204.png)
 
 ### `npm start`
 
