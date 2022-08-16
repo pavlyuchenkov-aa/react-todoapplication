@@ -10,7 +10,7 @@ export default class TodoSearch extends Component {
             text: '',
         };
 
-
+        
         this.onSearchChange = (event) => {
             const text = event.target.value;
             this.setState({ text });

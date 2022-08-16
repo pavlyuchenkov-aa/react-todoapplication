@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import TodoSearch from '../TodoSearch/TodoSearch';
 import TodoForm from '../TodoForm';
+import Split from 'react-split'
 import TodoItem from '../TodoItem';
 import './App.css';
 
@@ -116,6 +117,7 @@ export default class App extends Component {
                 return todos;
             });
         };
+
     }
 
     render() {
@@ -126,108 +128,113 @@ export default class App extends Component {
         //TodoForm - форма для создания задачи (название, описание), статус - pending (по-умолчанию)
         //TodoSearch - форма для поиска задач по названию
         //Tabs, TabList, Tab - теги для создания вкладок
+        //Split - тег для создания панели изменения ширины списка наименований заметок
         //TodoItem - задача
         //TabPanel - панель редактирования информации о задаче
-    
+
         return (
             <div className="TodoApp">
-
                 <header>
                     <h1>Todo List App</h1>
                 </header>
-
                 <TodoForm addTask={this.addTask} />
-
                 <TodoSearch onSearchChange={this.onSearchChange} />
 
                 <Tabs>
-                    <TabList>
-                        {filteredData.map(item => (
-                            <Tab key={item.id}>
-                                <TodoItem
-                                    taskTitle={item.taskTitle}
-                                    taskDescription={item.taskDescription}
-                                    pending={item.pending}
-                                    in_progress={item.in_progress}
-                                    done={item.done}
-                                />
-                            </Tab>
+                    <Split
+                        direction="horizontal"
+                        cursor="col-resize"
+                        className="split-flex"
+                    >
+                        <TabList>
+                            {filteredData.map(item => (
+                                <Tab key={item.id}>
+                                    <TodoItem
+                                        taskTitle={item.taskTitle}
+                                        taskDescription={item.taskDescription}
+                                        pending={item.pending}
+                                        in_progress={item.in_progress}
+                                        done={item.done}
+                                    />
+                                </Tab>
 
-                        ))}
-                    </TabList>
+                            ))}
+                        </TabList>
+                        <div>
+                            {filteredData.map((todo) => {
+                                const { taskNameInput } = this.state;
+                                const { taskDescriptionInput } = this.state;
 
-                    {filteredData.map((todo) => {
-                        const { taskNameInput } = this.state;
-                        const { taskDescriptionInput } = this.state;
+                                return (
+                                    <TabPanel>
+                                        <div className="panel-content">
+                                            <h3>
+                                                <div className="item-todo">
+                                                    <div className="item-text">
 
-                        return (
-                            <TabPanel>
-                                <div className="panel-content">
-                                    <h3>
-                                        <div className="item-todo">
-                                            <div className="item-text">
+                                                        <div name="taskTitle">
+                                                            Task Title
+                                                            <div style={{ marginTop: '20px' }}>
+                                                                <input
+                                                                    type="text"
+                                                                    id="taskTitle"
+                                                                    placeholder={todo.taskTitle}
+                                                                    value={taskNameInput}
+                                                                    onChange={(e) => this.editTaskName(todo.id, e.target.value)}
+                                                                    style={{ color: 'white' }}
+                                                                />
+                                                            </div>
+                                                        </div>
 
-                                                <div name="taskTitle">
-                                                    Task Title
-                                                    <div style={{ marginTop: '20px' }}>
-                                                        <input
-                                                            type="text"
-                                                            id="taskTitle"
-                                                            placeholder={todo.taskTitle}
-                                                            value={taskNameInput}
-                                                            onChange={(e) => this.editTaskName(todo.id, e.target.value)}
-                                                            style={{ color: 'white' }}
-                                                        />
+                                                        <div name="taskDescription" style={{ marginTop: '20px' }}>
+                                                            Task Description
+                                                            <div style={{ marginTop: '20px' }}>
+                                                                <input
+                                                                    type="text"
+                                                                    id="taskDesc"
+                                                                    value={taskDescriptionInput}
+                                                                    placeholder={todo.taskDescription}
+                                                                    onChange={(e) => this.editTaskDesc(todo.id, e.target.value)}
+                                                                    style={{ color: 'white' }}
+                                                                />
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="taskStatus" style={{ marginTop: '20px' }}>
+                                                            Set status
+                                                        </div>
+
+                                                        <div className="statusRow" style={{ marginTop: '10px' }}>
+                                                            <div class="statusColumn" onClick={(e) => this.editTaskStatus(todo.id, "pending")}>Pending</div>
+                                                            <div
+                                                                class="statusColumn"
+                                                                style={{ background: '#608dff' }}
+                                                                onClick={() => this.editTaskStatus(todo.id, "in_progress")}
+                                                            >
+                                                                In Progress
+                                                            </div>
+                                                            <div class="statusColumn" style={{ background: '#23a02d' }}
+                                                                onClick={() => this.editTaskStatus(todo.id, "done")}
+                                                            >
+                                                                Done
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="item-delete"
+                                                            type="submit"
+                                                            onClick={() => this.removeTask(todo.id)}
+                                                        >
+                                                            Delete
+                                                        </div>
                                                     </div>
                                                 </div>
-
-                                                <div name="taskDescription" style={{ marginTop: '20px' }}>
-                                                    Task Description
-                                                    <div style={{ marginTop: '20px' }}>
-                                                        <input
-                                                            type="text"
-                                                            id="taskDesc"
-                                                            value={taskDescriptionInput}
-                                                            placeholder={todo.taskDescription}
-                                                            onChange={(e) => this.editTaskDesc(todo.id, e.target.value)}
-                                                            style={{ color: 'white' }}
-                                                        />
-                                                    </div>
-                                                </div>
-
-                                                <div className="taskStatus" style={{ marginTop: '20px' }}>
-                                                    Set status
-                                                </div>
-
-                                                <div className="statusRow" style={{ marginTop: '10px' }}>
-                                                    <div class="statusColumn" onClick={(e) => this.editTaskStatus(todo.id, "pending")}>Pending</div>
-                                                    <div
-                                                        class="statusColumn"
-                                                        style={{ background: '#608dff' }}
-                                                        onClick={() => this.editTaskStatus(todo.id, "in_progress")}
-                                                    >
-                                                        In Progress
-                                                    </div>
-                                                    <div class="statusColumn" style={{ background: '#23a02d' }}
-                                                        onClick={() => this.editTaskStatus(todo.id, "done")}
-                                                    >
-                                                        Done
-                                                    </div>
-                                                </div>
-
-                                                <div className="item-delete"
-                                                    type="submit"
-                                                    onClick={() => this.removeTask(todo.id)}
-                                                >
-                                                    Delete
-                                                </div>
-                                            </div>
+                                            </h3>
                                         </div>
-                                    </h3>
-                                </div>
-                            </TabPanel>
-                        )
-                    })}
+                                    </TabPanel>
+                                )
+                            })}
+                        </div>
+                    </Split>
                 </Tabs>
             </div>
         );

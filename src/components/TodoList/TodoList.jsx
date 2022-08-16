@@ -6,6 +6,7 @@ import { Tab } from 'react-tabs';
 
 //список задач
 const TodoList = ({ items }) => {
+    //инициализация вкладки с задачей
     const todos = items.map(item => (
         <Tab key={item.id}>
             <TodoItem

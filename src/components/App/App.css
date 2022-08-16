@@ -7,7 +7,7 @@
 
 .react-tabs__tab-list .todo-item .item-text {
     display: inline-block;
-    width: 110px;
+    max-width: 100%;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -16,6 +16,25 @@
 .TodoApp .todo-item .item-text {
     display: inline-block;
     padding-left: 6px;
+}
+
+.split-flex {
+    display: flex;
+    flex-direction: row;
+    width: 98%;
+}
+
+.gutter.gutter-horizontal {
+    cursor: ew-resize;
+    background-color: #aaa;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='30'><path d='M2 0 v30 M5 0 v30 M8 0 v30' fill='none' stroke='black'/></svg>");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 10px;
+    height: 100%;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .TodoApp input {
